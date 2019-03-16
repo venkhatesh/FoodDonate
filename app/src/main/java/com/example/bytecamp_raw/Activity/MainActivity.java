@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.support.v4.app.FragmentTransaction;
 
 import com.example.bytecamp_raw.Activity.Fragment.ActivityFragment;
+import com.example.bytecamp_raw.Activity.Fragment.DistributionFragment;
 import com.example.bytecamp_raw.Activity.Fragment.ProfileFragment;
 import com.example.bytecamp_raw.Activity.Fragment.HomeFragment;
 import com.example.bytecamp_raw.R;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    fragment = new HomeFragment();
+                    fragment = new DistributionFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_activity:
@@ -46,8 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        loadFragment(new HomeFragment());
-        mTextMessage = (TextView) findViewById(R.id.message);
+        loadFragment(new DistributionFragment());
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
