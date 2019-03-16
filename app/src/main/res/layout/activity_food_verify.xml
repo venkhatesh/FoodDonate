@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".food_verify">
 
@@ -15,9 +16,10 @@
 
     <TextView
         android:id="@+id/no"
-        android:text="Sr.No"
+        android:text="    "
         android:padding="20dp"
         android:textSize="25dp"
+        android:textColor="#ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
@@ -26,15 +28,17 @@
         android:text="Item"
         android:textSize="25dp"
         android:paddingLeft="50dp"
+        android:textColor="#ffffff"
         android:layout_marginLeft="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
     <TextView
         android:id="@+id/qty"
-        android:text="Qty"
+        android:text="Qty (Kg)"
         android:paddingLeft="100dp"
         android:textSize="25dp"
+        android:textColor="#ffffff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
@@ -49,6 +53,7 @@
 
             android:layout_marginLeft="30dp"
             android:textSize="25dp"
+            android:textColor="#ffffff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -57,6 +62,7 @@
             android:text="Roti"
             android:textSize="25dp"
             android:paddingLeft="75dp"
+            android:textColor="#ffffff"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,11 +72,12 @@
             android:layout_marginLeft="110dp"
             android:width="50dp"
             android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:inputType="number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
-
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -81,6 +88,7 @@
 
             android:layout_marginLeft="30dp"
             android:textSize="25dp"
+            android:textColor="#ffffff"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
@@ -89,6 +97,7 @@
             android:text="Rice"
             android:textSize="25dp"
             android:paddingLeft="75dp"
+            android:textColor="#ffffff"
             android:layout_marginLeft="5dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -98,8 +107,120 @@
             android:layout_marginLeft="110dp"
             android:width="50dp"
             android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:inputType="number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+
+            android:layout_marginLeft="30dp"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+
+            android:text="Dal "
+            android:textSize="25dp"
+            android:paddingLeft="80dp"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <EditText
+
+            android:layout_marginLeft="110dp"
+            android:width="50dp"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:inputType="number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+
+            android:layout_marginLeft="30dp"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+
+            android:text="Veg "
+            android:textSize="25dp"
+            android:paddingLeft="75dp"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <EditText
+            android:layout_marginLeft="110dp"
+            android:width="50dp"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:inputType="number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <CheckBox
+
+            android:layout_marginLeft="30dp"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+
+            android:text="Other"
+            android:textSize="25dp"
+            android:paddingLeft="75dp"
+            android:textColor="#ffffff"
+            android:layout_marginLeft="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+        <EditText
+            android:layout_marginLeft="110dp"
+            android:width="50dp"
+            android:textSize="25dp"
+            android:textColor="#ffffff"
+            android:inputType="number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 </LinearLayout>
