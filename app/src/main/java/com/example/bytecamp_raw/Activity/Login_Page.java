@@ -40,6 +40,7 @@ public class Login_Page extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE).edit();
                 editor.putString("name", userName.getText().toString());
+                editor.putString("NGOname","FoodHelperz");
                 editor.apply();
 
                 mDatabase.child("volunteer").child(userName.getText().toString()).child("name").setValue(userName.getText().toString());

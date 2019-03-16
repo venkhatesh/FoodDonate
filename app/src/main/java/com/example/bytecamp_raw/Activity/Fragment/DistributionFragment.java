@@ -56,8 +56,10 @@ public class DistributionFragment extends Fragment {
         mDatabase.child("hotel").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                hotelList.clear();
                 for (DataSnapshot uniquesnapshot : dataSnapshot.getChildren()){
                     Log.d("DetailActivity ", "Food Type " + uniquesnapshot.getValue(HotelModel.class).getName());
+
                     hotelList.add(uniquesnapshot.getValue(HotelModel.class));
                 }
 

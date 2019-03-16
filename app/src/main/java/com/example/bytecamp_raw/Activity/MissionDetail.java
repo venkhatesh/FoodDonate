@@ -89,11 +89,13 @@ public class MissionDetail extends AppCompatActivity {
             public void onClick(View view) {
                 SharedPreferences prefs =getApplicationContext().getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE);
                 final String Prefname = prefs.getString("name",null);
+                final String ngoName = prefs.getString("NGOname",null);
                 mDatabase = FirebaseDatabase.getInstance().getReference();
                 mDatabase.child("volunteer").child(Prefname).child("HotelName").setValue(hotelName);
                 mDatabase.child("volunteer").child(Prefname).child("FoodType").setValue(foodType);
                 mDatabase.child("volunteer").child(Prefname).child("Quantity").setValue(quantity);
                 mDatabase.child("volunteer").child(Prefname).child("Freshness").setValue(freshness);
+                mDatabase.child("hotel").child(hotelName).child("Pickup Requests").child(ngoName).setValue("5 KM");
                 finish();
 
             }
