@@ -6,10 +6,10 @@ import com.google.firebase.database.Exclude;
  * Created by venkat on 23/2/19.
  */
 public class HotelModel {
-    String Name;
-    String FoodType;
-    String Freshness;
-    String Quantity;
+   public String Name;
+    public String FoodType;
+    public String Freshness;
+    public String Quantity;
 
     @Exclude
     public String getDonationTime() {
@@ -21,8 +21,8 @@ public class HotelModel {
         DonationTime = donationTime;
     }
 
-    String SensorReading;
-    String DonationTime;
+    public String SensorReading;
+    public String DonationTime;
 
     @Exclude
     public Location getLocation() {
@@ -34,7 +34,7 @@ public class HotelModel {
         this.Location = location;
     }
 
-    Location Location;
+    public Location Location;
 
     @Exclude
     public String getDescription() {
@@ -46,7 +46,7 @@ public class HotelModel {
         Description = description;
     }
 
-    String Description;
+    public String Description;
 
     @Exclude
     public String getName() {

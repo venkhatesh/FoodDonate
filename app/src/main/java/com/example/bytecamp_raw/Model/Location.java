@@ -34,5 +34,5 @@ public class Location {
         Long = aLong;
     }
 
-    String Lat,Long;
+    public String Lat,Long;
 }
