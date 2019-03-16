@@ -16,9 +16,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".food_verify"></activity>
+        <activity android:name=".Activity.volunteer_qrcode" />
+        <activity android:name=".Activity.volunteer_mission" />
         <activity
             android:name=".Activity.DonateActivity"
-            android:label="@string/title_activity_donate"></activity>
+            android:label="@string/title_activity_donate" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -33,10 +36,9 @@
 
         <activity
             android:name=".Activity.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity android:name=".Activity.startMission" />
         <activity android:name=".Activity.DetailHotelActivity" />
-
         <activity
             android:name=".Activity.MissionDetail"
             android:screenOrientation="portrait" />

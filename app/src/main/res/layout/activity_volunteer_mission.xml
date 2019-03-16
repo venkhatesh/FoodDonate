@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background"
+        android:alpha="0.5
+
+"
+        android:scaleType="fitXY"
+        />
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/carddetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="200dp"
+        android:elevation="8dp"
+        >
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/details"
+                android:text="Your Mission"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                android:layout_margin="20dp"
+                />
+            <TextView
+                android:textStyle="bold"
+                android:id="@+id/name"
+                android:text="Hotel Name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/details"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/type"
+                app:layout_constraintHorizontal_bias="0.15"
+                android:layout_margin="5dp"/>
+
+            <TextView
+
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/quantity"
+                android:layout_margin="5dp"
+                android:id="@+id/type"
+                android:text="Food Type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/name"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintHorizontal_bias="0.15"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:id="@+id/quantity"
+                android:text="Quantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/type"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/fresh"
+                app:layout_constraintHorizontal_bias="0.15"/>
+
+            <TextView
+                android:textStyle="bold"
+                android:layout_margin="5dp"
+                android:id="@+id/fresh"
+                android:text="Expected Freshness"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/quantity"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.15"/>
+
+            <TextView
+                android:text="Rangoli"
+                android:id="@+id/name_setter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/details"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/name"
+                app:layout_constraintBottom_toTopOf="@+id/type_setter"
+                android:layout_margin="5dp"
+                />
+            <TextView
+                android:id="@+id/type_setter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/name_setter"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/name"
+                app:layout_constraintBottom_toTopOf="@+id/quantity_setter"
+                android:layout_margin="5dp"
+                android:text="Fried"
+                />
+            <TextView
+                android:id="@+id/quantity_setter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/type_setter"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/name"
+                android:layout_margin="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/fresh_setter"
+                android:text="8 kgs"
+                />
+            <TextView
+                android:id="@+id/fresh_setter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/quantity_setter"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintLeft_toRightOf="@+id/name"
+                android:layout_margin="5dp"
+                android:text="3-4 Hrs"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+
+
+
+        </android.support.constraint.ConstraintLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+    <Button
+        android:id="@+id/start_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:elevation="8dp"
+        app:layout_constraintTop_toBottomOf="@+id/carddetails"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.3"
+        android:background="@drawable/mybutton"
+        android:textColor="#fff"
+        android:text="Start Mission  >>"
+        android:textAllCaps="false"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        />
+
+</android.support.constraint.ConstraintLayout>
