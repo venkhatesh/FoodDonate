@@ -101,7 +101,7 @@
 
     <Button
         android:id="@+id/hotel_button"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:textColor="#fff"
@@ -110,20 +110,36 @@
         app:layout_constraintTop_toBottomOf="@+id/cardlogin"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@id/volunteer_button"
-
+        app:layout_constraintRight_toLeftOf="@id/ngo_button"
+        android:layout_marginLeft="10dp"
         />
 
     <Button
         app:layout_constraintLeft_toRightOf="@+id/hotel_button"
         app:layout_constraintRight_toRightOf="parent"
-        android:id="@+id/volunteer_button"
-        android:layout_width="150dp"
+        android:id="@+id/ngo_button"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:padding="10dp"
         android:textColor="#fff"
         android:background="@drawable/mybutton"
-        android:text="Volunters"
+        android:text="NGO"
+        app:layout_constraintTop_toBottomOf="@+id/cardlogin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toLeftOf="@id/volunteer_button"
+
+        />
+
+    <Button
+        app:layout_constraintLeft_toRightOf="@+id/ngo_button"
+        app:layout_constraintRight_toRightOf="parent"
+        android:id="@+id/volunteer_button"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="#fff"
+        android:background="@drawable/mybutton"
+        android:text="Volunteer"
         app:layout_constraintTop_toBottomOf="@+id/cardlogin"
         app:layout_constraintBottom_toBottomOf="parent"
         />

@@ -17,7 +17,7 @@ public class Login_Page extends AppCompatActivity {
 
     private DatabaseReference mDatabase;
     EditText userName,pass1,pass2;
-    Button hotel,volunteer;
+    Button hotel,volunteer,ngo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,7 +26,8 @@ public class Login_Page extends AppCompatActivity {
         pass1 = findViewById(R.id.pass1);
         pass2 = findViewById(R.id.pass2);
         hotel = findViewById(R.id.hotel_button);
-        volunteer = findViewById(R.id.volunteer_button);
+        ngo = findViewById(R.id.ngo_button);
+        volunteer=findViewById(R.id.volunteer_button);
         mDatabase = FirebaseDatabase.getInstance().getReference();
         hotel.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,7 +36,7 @@ public class Login_Page extends AppCompatActivity {
                 startActivity(hotelIntent);
             }
         });
-        volunteer.setOnClickListener(new View.OnClickListener() {
+        ngo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SharedPreferences.Editor editor = getSharedPreferences("MY_PREFS_NAME", MODE_PRIVATE).edit();
