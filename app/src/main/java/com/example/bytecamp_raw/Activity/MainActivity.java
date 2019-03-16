@@ -27,15 +27,23 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
+                    item.setVisible(true);
                     fragment = new DistributionFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_activity:
+                    item.setVisible(true);
                     fragment = new ActivityFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_profile:
+                    item.setVisible(true);
                     fragment = new ProfileFragment();
+                    loadFragment(fragment);
+                    return true;
+                case R.id.ngo_list:
+                    item.setVisible(false);
+                    fragment = new Hotel_Home();
                     loadFragment(fragment);
                     return true;
             }
@@ -49,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         loadFragment(new DistributionFragment());
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        navigation.getMenu().removeItem(R.id.ngo_list);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
     }
 

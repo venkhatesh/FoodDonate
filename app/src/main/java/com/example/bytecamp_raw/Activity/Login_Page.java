@@ -31,7 +31,7 @@ public class Login_Page extends AppCompatActivity {
         hotel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent hotelIntent = new Intent(getApplicationContext(),Hotel_Home.class);
+                Intent hotelIntent = new Intent(getApplicationContext(),DonateActivity.class);
                 startActivity(hotelIntent);
             }
         });
