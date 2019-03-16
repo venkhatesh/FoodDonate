@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "885880927954",
+    "firebase_url": "https://bytecamp19.firebaseio.com",
+    "project_id": "bytecamp19",
+    "storage_bucket": "bytecamp19.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885880927954:android:0a96ee9c7f662f7c",
+        "android_client_info": {
+          "package_name": "com.example.bytecamp_raw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885880927954-rnmgvrsih04egb79r9t84uv96hti8gqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC8WX3rkAHi3yhQ70jEpu7bh08GwmFo6WA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
