@@ -1,5 +1,7 @@
 package com.example.bytecamp_raw.Activity.Fragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import com.example.bytecamp_raw.Activity.MissionDetail;
 import com.example.bytecamp_raw.Activity.startMission;
@@ -39,12 +42,59 @@ public class ActivityFragment  extends Fragment {
         final String name = prefs.getString("name",null);
         Log.d("ActivityFragment", "onCreateView: " + name);
         mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        LayoutInflater li = LayoutInflater.from(getActivity());
+        final View promptsView = li.inflate(R.layout.assign_volunteer_dialog, null);
+
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(
+                getActivity());
+
+        // set prompts.xml to alertdialog builder
+        alertDialogBuilder.setView(promptsView);
+
+//        final EditText userInput = (EditText) promptsView
+//                .findViewById(R.id.editTextDialogUserInput);
+
+        // set dialog message
+        alertDialogBuilder
+                .setCancelable(false)
+                .setPositiveButton("OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                // get user input and set it to result
+                                // edit text
+//                                result.setText(userInput.getText());
+                                dialog.cancel();
+                            }
+                        })
+                .setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int id) {
+                                dialog.cancel();
+                            }
+                        });
+
+        // create alert dialog
+        final AlertDialog alertDialog = alertDialogBuilder.create();
+        Button addVolunteer= promptsView.findViewById(R.id.btn_volunteer_1);
+        addVolunteer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                mDatabase.child("")
+            }
+        });
+
+        // show it
+
+
         start = view.findViewById(R.id.start_button);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), startMission.class);
-                startActivity(intent);
+                alertDialog.show();
+
+//                Intent intent = new Intent(getActivity(), startMission.class);
+//                startActivity(intent);
             }
         });
 //        mDatabase.child("volunteer").addValueEventListener(new ValueEventListener() {

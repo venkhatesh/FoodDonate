@@ -9,9 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/background"
-        android:alpha="0.5
-
-"
+        android:alpha="0.5"
         android:scaleType="fitXY"
         />
 
@@ -159,7 +157,7 @@
         app:layout_constraintVertical_bias="0.3"
         android:background="@drawable/mybutton"
         android:textColor="#fff"
-        android:text="Start Mission  >>"
+        android:text="Assign Volunteer"
         android:textAllCaps="false"
         android:textSize="20dp"
         android:textStyle="bold"

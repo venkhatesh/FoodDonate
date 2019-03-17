@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/placeholder_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose a volunteer"
+        android:layout_marginStart="65dp"
+        android:layout_marginEnd="65dp"
+        android:layout_marginBottom="20dp"
+        android:textSize="30sp" />
+    <android.support.v7.widget.CardView
+        android:id="@+id/volunteer_card1"
+        android:layout_below="@+id/placeholder_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+            <TextView
+                android:id="@+id/volunteer_name1"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Volunteer 1"
+                android:textSize="25sp"/>
+
+            <Button
+                android:id="@+id/btn_volunteer_1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="222dp"
+                android:layout_toRightOf="@+id/volunteer_name1"
+                android:background="@drawable/badge" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:id="@+id/volunteer_card2"
+        android:layout_below="@+id/volunteer_card1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+            <TextView
+                android:id="@+id/volunteer_name2"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Volunteer 2"
+                android:textSize="25sp"/>
+
+            <Button
+                android:id="@+id/btn_volunteer_2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="222dp"
+                android:layout_toRightOf="@+id/volunteer_name2"
+                android:background="@drawable/badge" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        android:id="@+id/volunteer_card3"
+        android:layout_below="@+id/volunteer_card2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <RelativeLayout
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            >
+            <TextView
+                android:id="@+id/volunteer_name3"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Volunteer 3"
+                android:textSize="25sp"/>
+
+            <Button
+                android:id="@+id/btn_volunteer_3"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="222dp"
+                android:layout_toRightOf="@+id/volunteer_name3"
+                android:background="@drawable/badge" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
