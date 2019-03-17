@@ -51,7 +51,7 @@ public class DistributionFragment extends Fragment {
         adapter = new HotelsAdapter(getActivity());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL,false);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mDatabase = FirebaseDatabase.getInstance().getReference();
         mDatabase.child("hotel").addValueEventListener(new ValueEventListener() {
             @Override

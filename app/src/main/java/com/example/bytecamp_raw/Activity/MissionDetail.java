@@ -75,8 +75,14 @@ public class MissionDetail extends AppCompatActivity {
                         quantity = uniquesnapshot.getValue(HotelModel.class).getQuantity();
                         freshness = uniquesnapshot.getValue(HotelModel.class).getFreshness();
                         Log.d("MissionDetail", "onDataChange: " + hotelName);
-
+                        TextView textView1=(TextView) findViewById(R.id.foodtype);
+                        textView1.setText("Food Type: "+foodType);
+                        TextView textView2=(TextView)findViewById(R.id.freshness);
+                        textView2.setText("Freshness"+freshness);
+                        TextView textView3=(TextView)findViewById(R.id.quantity);
+                        textView3.setText("Quantity: "+quantity);
                     }
+
                 }
             }
             @Override
