@@ -52,8 +52,9 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         Intent intent = new Intent();
         intent.putExtra("QRcode", rawResult.getText());
         int i,x,j,y,z;
-        String cipher="asdfsdvads";
+        String cipher=rawResult.getText();
         int len = cipher.length();
+        char sub_key='5';
         char[] c1 = new char[len];
         char[] ct = new char[len];
         char[] rfc = new char[len];
@@ -72,7 +73,7 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         }
         for(i=0;i<len;i++)
         {
-            x = (ct[i]-4);
+            x = (ct[i]-sub_key);
             if(x<65) {
                 y = 65-x;
                 rfc[i] = (char)(90-(y-1)); }
