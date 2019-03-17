@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +22,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
     DatabaseReference databaseReference;
+    String deciphered;
 
 
     @Override
@@ -31,12 +33,14 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         databaseReference= FirebaseDatabase.getInstance().getReference().child("NGO").child("RHA").child("KYC");
         // Set the scanner view as the content view
         setContentView(mScannerView);
-        final String deCipher;
+        String deCipher;
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                deCipher = String.valueOf(dataSnapshot.getValue());
+                Log.d("KYC", "onDataChange: ");
+                deciphered = (String) dataSnapshot.getValue();
+                Log.d("KYC", deciphered);
             }
 
             @Override
@@ -74,7 +78,6 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         intent.putExtra("QRcode", rawResult.getText());
         int i,x,j,y,z;
         String cipher=rawResult.getText();
-//        String DeCipher = databaseReference.getV
         int len = cipher.length();
         char sub_key='5';
         char[] c1 = new char[len];
@@ -104,6 +107,10 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
 
         }
         cipher = new String(rfc);
+        if (cipher.trim().equals(deciphered))
+            Toast.makeText(this, "KYC Complete", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this,"Invalid credentials",Toast.LENGTH_LONG).show();
         setResult(RESULT_OK, intent);
         finish();
     }
