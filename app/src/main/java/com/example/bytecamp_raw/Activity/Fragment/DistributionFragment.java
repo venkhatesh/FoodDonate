@@ -77,7 +77,7 @@ public class DistributionFragment extends Fragment {
                     }
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                        Log.d(TAG, "onCancelled: ");
                     }
                 });
 
