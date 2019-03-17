@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -29,8 +30,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import static android.support.constraint.Constraints.TAG;
+import static java.util.Collections.*;
 
 /**
  * Created by venkat on 23/2/19.
@@ -42,17 +45,107 @@ public class DistributionFragment extends Fragment {
     HotelModel model;
     ArrayList<HotelModel> hotelList;
     private DatabaseReference mDatabase;
+    Button filter,nonveg,distance;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.distribution_fragment, container, false);
         recyclerView = view.findViewById(R.id.distribution_recycler);
+        filter = view.findViewById(R.id.filter);
+        nonveg = view.findViewById(R.id.filter_nonveg);
+        distance = view.findViewById(R.id.distance);
         hotelList = new ArrayList<HotelModel>();
         adapter = new HotelsAdapter(getActivity());
         recyclerView.setAdapter(adapter);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayout.VERTICAL,false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mDatabase = FirebaseDatabase.getInstance().getReference();
+        distance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    ArrayList<HotelModel> sortedList = new ArrayList<>();
+                mDatabase.child("hotel").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        hotelList.clear();
+                        for (DataSnapshot uniquesnapshot : dataSnapshot.getChildren()){
+                            Log.d("DetailActivity ", "Food Type " + uniquesnapshot.getValue(HotelModel.class).getName());
+                                hotelList.add(uniquesnapshot.getValue(HotelModel.class));
+                        }
+
+                        Log.d(TAG, "onDataChange: siiize " + hotelList.size());
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+                int n = hotelList.size();
+                for (int i = 0; i < n-1; i++)
+                    for (int j = 0; j < n-i-1; j++)
+                        if (hotelList.get(j).Distance > hotelList.get(j+1).Distance)
+                        {
+                            // swap temp and arr[i]
+                            HotelModel temp = hotelList.get(j);
+                            hotelList.set(j,hotelList.get(j+1));
+                            hotelList.set((j+1), temp);
+                        }
+                adapter.notifyDataSetChanged();
+            }
+        });
+        nonveg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hotelList.clear();
+                mDatabase.child("hotel").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        hotelList.clear();
+                        for (DataSnapshot uniquesnapshot : dataSnapshot.getChildren()){
+                            Log.d("DetailActivity ", "Food Type " + uniquesnapshot.getValue(HotelModel.class).getName());
+                            if (uniquesnapshot.getValue(HotelModel.class).foodclass.equals("nonveg")){
+                                hotelList.add(uniquesnapshot.getValue(HotelModel.class));
+
+                            }
+                        }
+
+                        Log.d(TAG, "onDataChange: siiize " + hotelList.size());
+                        adapter.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                hotelList.clear();
+                mDatabase.child("hotel").addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        hotelList.clear();
+                        for (DataSnapshot uniquesnapshot : dataSnapshot.getChildren()){
+                            Log.d("DetailActivity ", "Food Type " + uniquesnapshot.getValue(HotelModel.class).getName());
+                            if (uniquesnapshot.getValue(HotelModel.class).foodclass.equals("veg")){
+                                hotelList.add(uniquesnapshot.getValue(HotelModel.class));
+
+                            }
+                        }
+
+                        Log.d(TAG, "onDataChange: siiize " + hotelList.size());
+                        adapter.notifyDataSetChanged();
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+            }
+        });
         mDatabase.child("hotel").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

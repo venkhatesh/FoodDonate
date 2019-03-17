@@ -12,6 +12,28 @@ public class HotelModel {
     public String Quantity;
 
     @Exclude
+    public Integer getDistance() {
+        return Distance;
+    }
+
+    @Exclude
+    public void setDistance(Integer distance) {
+        Distance = distance;
+    }
+
+    public Integer Distance;
+    @Exclude
+    public String getFoodclass() {
+        return foodclass;
+    }
+
+    @Exclude
+    public void setFoodclass(String foodclass) {
+        this.foodclass = foodclass;
+    }
+
+    public String foodclass;
+    @Exclude
     public String getDonationTime() {
         return DonationTime;
     }
@@ -99,7 +121,7 @@ public class HotelModel {
     public HotelModel() {
     }
 
-    public HotelModel(String name, String foodType, String freshness, String quantity, String sensorReading,String description,Location location) {
+    public HotelModel(String name, String foodType, String freshness, String quantity, String sensorReading,String description,Location location,String foodclass, Integer distance) {
         Name = name;
         FoodType = foodType;
         Freshness = freshness;
@@ -107,5 +129,7 @@ public class HotelModel {
         SensorReading = sensorReading;
         Description = description;
         Location = location;
+        foodclass = foodclass;
+        Distance = distance;
     }
 }
