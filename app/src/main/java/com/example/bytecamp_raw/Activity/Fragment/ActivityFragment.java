@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.bytecamp_raw.Activity.MissionDetail;
 import com.example.bytecamp_raw.Activity.startMission;
@@ -81,6 +82,8 @@ public class ActivityFragment  extends Fragment {
             @Override
             public void onClick(View view) {
 //                mDatabase.child("")
+                Toast.makeText(getActivity(), "Volunteer assigned !", Toast.LENGTH_SHORT).show();
+                alertDialog.cancel();
             }
         });
 

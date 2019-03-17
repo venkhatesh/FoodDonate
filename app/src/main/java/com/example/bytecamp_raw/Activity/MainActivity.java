@@ -48,29 +48,42 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            Fragment fragment;
+            Fragment fragment = null;
+            Fragment currentFragment=getSupportFragmentManager().findFragmentById(R.id.frame_container);
             FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
 
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     item.setVisible(true);
-                    fragment = new DistributionFragment();
-                    loadFragment(fragment);
-                    return true;
+                    if (!(currentFragment instanceof DistributionFragment)) {
+                        fragment = new DistributionFragment();
+                        getSupportFragmentManager().beginTransaction().hide(currentFragment).show(fragment).commit();
+                        loadFragment(fragment);
+                    }
+                        return true;
+
                 case R.id.navigation_activity:
                     item.setVisible(true);
-                    fragment = new ActivityFragment();
-                    loadFragment(fragment);
+                    if (!(currentFragment instanceof ActivityFragment)) {
+                        fragment = new ActivityFragment();
+                        getSupportFragmentManager().beginTransaction().hide(currentFragment).show(fragment).commit();
+                        loadFragment(fragment);
+                    }
                     return true;
                 case R.id.navigation_profile:
                     item.setVisible(true);
-                    fragment = new ProfileFragment();
-                    loadFragment(fragment);
+                    if (!(currentFragment instanceof ProfileFragment)) {
+                        fragment = new ProfileFragment();
+                        getSupportFragmentManager().beginTransaction().hide(currentFragment).show(fragment).commit();
+                        loadFragment(fragment);
+                    }
                     return true;
                 case R.id.ngo_list:
                     item.setVisible(false);
+                    if (!(currentFragment instanceof ProfileFragment)) {
                     fragment = new Hotel_Home();
                     loadFragment(fragment);
+                    }
                     return true;
             }
 
@@ -158,6 +171,12 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.frame_container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
     }
 
     public void showNotification(Context context, String title, String body) {
