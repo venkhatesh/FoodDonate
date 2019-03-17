@@ -8,7 +8,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mission_complete"></activity>
+        <activity android:name=".Activity.hotel_end"></activity>
+        <activity android:name=".mission_complete" />
         <activity android:name=".food_verify" />
         <activity android:name=".Activity.volunteer_qrcode" />
         <activity android:name=".Activity.volunteer_mission" />
@@ -39,7 +40,7 @@
         <activity
             android:name=".Activity.MapsActivity"
             android:label="@string/title_activity_maps" />
-        <activity android:name=".Activity.QrCodeScanner"/>
+        <activity android:name=".Activity.QrCodeScanner" />
         <activity android:name=".Activity.startMission" />
         <activity android:name=".Activity.DetailHotelActivity" />
         <activity

@@ -98,7 +98,7 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         }
         for(i=0;i<len;i++)
         {
-            x = (ct[i]-sub_key);
+            x = (ct[i]+sub_key);
             if(x<65) {
                 y = 65-x;
                 rfc[i] = (char)(90-(y-1)); }
@@ -107,10 +107,12 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
 
         }
         cipher = new String(rfc);
-        if (cipher.trim().equals(deciphered))
-            Toast.makeText(this, "KYC Complete", Toast.LENGTH_SHORT).show();
-        else
-            Toast.makeText(this,"Invalid credentials",Toast.LENGTH_LONG).show();
+            Intent intent1=new Intent(getApplicationContext(),hotel_end.class);
+            startActivity(intent1);
+//        if (cipher.trim().equals(deciphered))
+//            Toast.makeText(this, "KYC Complete", Toast.LENGTH_SHORT).show();
+//        else
+//            Toast.makeText(this,"Invalid credentials",Toast.LENGTH_LONG).show();
         setResult(RESULT_OK, intent);
         finish();
     }
