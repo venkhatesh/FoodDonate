@@ -27,7 +27,7 @@ public class volunteer_qrcode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_qrcode);
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("RHA").child("KYC");
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("NGO").child("RHA").child("KYC");
         imageView=findViewById(R.id.qrcode);
         String pt=getAlphaNumericString(16);
         databaseReference.setValue(pt);

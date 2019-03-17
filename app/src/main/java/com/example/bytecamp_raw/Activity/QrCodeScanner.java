@@ -2,9 +2,15 @@ package com.example.bytecamp_raw.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.zxing.Result;
 
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
@@ -14,6 +20,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
  */
 public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
+    DatabaseReference databaseReference;
 
 
     @Override
@@ -21,8 +28,22 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         super.onCreate(state);
         // Programmatically initialize the scanner view
         mScannerView = new ZXingScannerView(this);
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("NGO").child("RHA").child("KYC");
         // Set the scanner view as the content view
         setContentView(mScannerView);
+        final String deCipher;
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                deCipher = String.valueOf(dataSnapshot.getValue());
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
     @Override
@@ -53,6 +74,7 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         intent.putExtra("QRcode", rawResult.getText());
         int i,x,j,y,z;
         String cipher=rawResult.getText();
+//        String DeCipher = databaseReference.getV
         int len = cipher.length();
         char sub_key='5';
         char[] c1 = new char[len];

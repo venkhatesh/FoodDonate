@@ -105,33 +105,34 @@ public class MainActivity extends AppCompatActivity {
         final String Prefname = prefs.getString("name",null);
         final String ngoName = prefs.getString("NGOname",null);
         DatabaseReference databaseReference= FirebaseDatabase.getInstance().getReference();
-        databaseReference.child("NGO").child("RHA").child("flag").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("NGO").child("FoodHelperz").child("flag").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Log.d("DataChange", dataSnapshot.toString());
                 String bool= (String) dataSnapshot.getValue();
+                Log.d("Bool", bool);
                 if (bool.equals("false"))
                 {
                     Log.d("SnapshotValueFalse", "onDataChange: ");
-                    Toast.makeText(MainActivity.this,"Notif aana chahiye !",LENGTH_LONG).show();
-                    NotificationCompat.Builder mBuilder =
-                            new NotificationCompat.Builder(MainActivity.this)
-                                    .setSmallIcon(R.drawable.ic_launcher_foreground)
-                                    .setContentTitle("Pickup Request Update from Restaurant")
-                                    .setContentText("Your request has been rejected")
-                            .setChannelId(CHANNEL_ID);
+//                    Toast.makeText(MainActivity.this,"Notif aana chahiye !",LENGTH_LONG).show();
+//                    NotificationCompat.Builder mBuilder =
+//                            new NotificationCompat.Builder(MainActivity.this)
+//                                    .setSmallIcon(R.drawable.ic_launcher_foreground)
+//                                    .setContentTitle("Pickup Request Update from Restaurant")
+//                                    .setContentText("Your request has been rejected")
+//                            .setChannelId(CHANNEL_ID);
+//
+//
+//                    // Gets an instance of the NotificationManager service//
+//
+//                    NotificationManager mNotificationManager =
+//
+//                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+//
+//
+//                            mNotificationManager.notify(001, mBuilder.build());
 
-
-                    // Gets an instance of the NotificationManager service//
-
-                    NotificationManager mNotificationManager =
-
-                            (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
-
-                            mNotificationManager.notify(001, mBuilder.build());
-
-                            showNotification(MainActivity.this,"Bantai","Notif");
+                            showNotification(MainActivity.this,"Food pickup request","Your request has been rejected");
                 }
                 else if (bool.equals("true"))
                 {
@@ -152,6 +153,8 @@ public class MainActivity extends AppCompatActivity {
 
 
                     mNotificationManager.notify(001, mBuilder.build());
+
+                    showNotification(MainActivity.this,"Food pickup request","Your request has been approved !");
                 }
 
             }
