@@ -60,8 +60,6 @@
                 android:hint="Enter User Name"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_margin="16dp"
                 />
             <EditText
                 android:id="@+id/pass1"
@@ -74,8 +72,6 @@
                 android:hint="Enter Password"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_margin="16dp"
                 android:inputType="textPassword"
                 />
 
@@ -91,9 +87,9 @@
                 android:hint="Confirm Password"
                 android:layout_marginRight="30dp"
                 android:layout_marginLeft="30dp"
-                android:layout_marginTop="16dp"
-                android:layout_margin="16dp"
                 />
+
+
 
         </android.support.constraint.ConstraintLayout>
     </android.support.v7.widget.CardView>

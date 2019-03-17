@@ -1,27 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    android:orientation="vertical"
     android:background="@drawable/background"
     tools:context=".mission_complete">
 
-    <cdflynn.android.library.checkview.CheckView
-        android:id="@+id/check"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animation_view"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:layout_gravity="center"
-        app:checkView_strokeColor="@color/white"
-        app:checkView_strokeWidth="10dp" />
-    <TextView
-        android:textSize="30dp"
-        android:layout_marginTop="20dp"
-        android:textColor="@color/white"
-        android:text="Mission Complete!!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-</LinearLayout>
+        app:lottie_autoPlay="true"
+        app:lottie_fileName="simpletick.json"
+        app:lottie_loop="true"/>
+</FrameLayout>

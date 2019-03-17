@@ -11,8 +11,6 @@ public class mission_complete extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mission_complete);
-        mCheckView=findViewById(R.id.check);
-        mCheckView.check();
 
     }
 }
