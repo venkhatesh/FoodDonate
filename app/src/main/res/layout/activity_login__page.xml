@@ -49,11 +49,35 @@
                 app:layout_constraintRight_toRightOf="parent"
                 android:text="Join a Cause for Betterment Of society"
                 />
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:gravity="center"
+                app:layout_constraintTop_toBottomOf="@id/description"
+                android:spinnerMode="dropdown"/>
+
+            <EditText
+                android:id="@+id/gov_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/spinner1"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/pass1"
+                android:hint="Enter Registration Id"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                />
+
             <EditText
                 android:id="@+id/user_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/description"
+                app:layout_constraintTop_toBottomOf="@id/gov_id"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/pass1"

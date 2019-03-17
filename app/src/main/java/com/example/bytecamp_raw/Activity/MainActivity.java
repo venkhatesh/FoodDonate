@@ -95,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); //<< this
         setContentView(R.layout.activity_main);
         loadFragment(new DistributionFragment());
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else if (bool.equals("true"))
                 {
-                    Toast.makeText(MainActivity.this,"Notif aana chahiye !",LENGTH_LONG).show();
+    //                Toast.makeText(MainActivity.this,"Notif aana chahiye !",LENGTH_LONG).show();
                     NotificationCompat.Builder mBuilder =
                             new NotificationCompat.Builder(MainActivity.this)
                                     .setSmallIcon(R.drawable.ic_launcher_foreground)
