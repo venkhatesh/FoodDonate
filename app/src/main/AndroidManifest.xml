@@ -8,6 +8,7 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:allowBackup="true"
@@ -38,6 +39,7 @@
         <activity
             android:name=".Activity.MapsActivity"
             android:label="@string/title_activity_maps" />
+        <activity android:name=".Activity.QrCodeScanner"/>
         <activity android:name=".Activity.startMission" />
         <activity android:name=".Activity.DetailHotelActivity" />
         <activity

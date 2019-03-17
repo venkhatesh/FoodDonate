@@ -4,6 +4,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -39,6 +40,7 @@ public class DonateActivity extends AppCompatActivity {
     FloatingActionButton fab;
     private DatabaseReference mDatabase;
     String TAG = "DonateActivity";
+    int fab_flag = 1;
     String CHANNEL_ID = "my_channel_01";// The id of the channel.
     CharSequence name = "NotifName";// The user-visible name of the channel.
     int importance = NotificationManager.IMPORTANCE_HIGH;
@@ -54,25 +56,16 @@ public class DonateActivity extends AppCompatActivity {
                 Fragment fragment;
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        item.setVisible(true);
+                        fab_flag = 1;
                         fragment = new Hotel_Home();
                         loadFragment(fragment);
                         return true;
                     case R.id.ngo_list:
-                        item.setVisible(true);
+                        fab_flag = 2;
                         fragment = new Track();
                         loadFragment(fragment);
                         return true;
-                    case R.id.navigation_activity:
-                        item.setVisible(false);
-                        fragment = new ActivityFragment();
-                        loadFragment(fragment);
-                        return true;
-                    case R.id.navigation_profile:
-                        item.setVisible(false);
-                        fragment = new ProfileFragment();
-                        loadFragment(fragment);
-                        return true;
+
                 }
                 return false;
             }
@@ -105,9 +98,13 @@ public class DonateActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BottomSheetDialogFragment fragment = new AddFoodFragment();
-                fragment.show(getSupportFragmentManager(), AddFoodFragment.class.getSimpleName());
-
+                if (fab_flag == 1) {
+                    BottomSheetDialogFragment fragment = new AddFoodFragment();
+                    fragment.show(getSupportFragmentManager(), AddFoodFragment.class.getSimpleName());
+                }else {
+                    Intent intent = new Intent(getApplicationContext(),QrCodeScanner.class);
+                    startActivity(intent);
+                }
             }
         });
 

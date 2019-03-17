@@ -14,6 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.bytecamp_raw.Activity.Fragment.AddFoodFragment;
@@ -37,7 +38,6 @@ public class Hotel_Home extends Fragment {
     private CardView card1;
     private CardView card2;
     private CardView card3;
-
     RecyclerView recyclerView;
     statusAdapter adapter;
     ArrayList<String> FoodStatus,FoodDate,FoodTime;
@@ -94,6 +94,8 @@ public class Hotel_Home extends Fragment {
 
 class statusAdapter extends RecyclerView.Adapter<statusAdapter.MyViewHolder>{
     ArrayList<String> FoodDate,FoodTime,FoodStatus;
+    private DatabaseReference mDatabase;
+
 
     public statusAdapter(ArrayList<String> FoodStatus, ArrayList<String> FoodTime,ArrayList<String> FoodDate){
         this.FoodDate = FoodDate;
@@ -113,6 +115,8 @@ class statusAdapter extends RecyclerView.Adapter<statusAdapter.MyViewHolder>{
         myViewHolder.foodStatus.setText(FoodStatus.get(i));
         myViewHolder.foodTime.setText(FoodTime.get(i));
         myViewHolder.foodDate.setText(FoodDate.get(i));
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
     }
 
     @Override
@@ -127,6 +131,7 @@ class statusAdapter extends RecyclerView.Adapter<statusAdapter.MyViewHolder>{
             foodDate = itemView.findViewById(R.id.food_date);
             foodTime = itemView.findViewById(R.id.food_time);
             foodStatus = itemView.findViewById(R.id.food_status);
+
         }
     }
 }

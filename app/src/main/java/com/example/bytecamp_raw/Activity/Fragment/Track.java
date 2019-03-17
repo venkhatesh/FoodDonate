@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -81,6 +82,7 @@ public class Track extends Fragment {
 class TrackAdapter extends RecyclerView.Adapter<TrackAdapter.MyViewHolder>{
     String TAG = "Track";
     List<String> ngoList,Location;
+    private DatabaseReference mDatabase;
     public TrackAdapter(List<String> ngoList, List<String> Location){
         this.ngoList = ngoList;
         this.Location = Location;
@@ -94,9 +96,24 @@ class TrackAdapter extends RecyclerView.Adapter<TrackAdapter.MyViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TrackAdapter.MyViewHolder myViewHolder, int i) {
+    public void onBindViewHolder(@NonNull final TrackAdapter.MyViewHolder myViewHolder, int i) {
             myViewHolder.ngoName.setText(ngoList.get(i));
             myViewHolder.ngoLocation.setText(Location.get(i));
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        myViewHolder.accept.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mDatabase.child("NGO").child(myViewHolder.ngoName.getText().toString()).child("flag").setValue("true");
+                }
+            });
+        myViewHolder.reject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mDatabase.child("NGO").child(myViewHolder.ngoName.getText().toString()).child("flag").setValue("true");
+
+            }
+        });
     }
 
     @Override
@@ -106,7 +123,8 @@ class TrackAdapter extends RecyclerView.Adapter<TrackAdapter.MyViewHolder>{
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView ngoName,ngoLocation,accept,reject;
+        TextView ngoName,ngoLocation;
+        Button accept,reject;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             ngoName = itemView.findViewById(R.id.ngo_name);
