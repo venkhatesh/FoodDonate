@@ -74,7 +74,7 @@ public class volunteer_qrcode extends AppCompatActivity {
                 Intent intent=new Intent(getApplicationContext(), food_verify.class);
                 startActivity(intent);
             }
-        }, 100);
+        }, 2000);
 
 
 
