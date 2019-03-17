@@ -132,6 +132,37 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp">
+
+            <RadioGroup
+                android:id="@+id/radio_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_veg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Veg"
+                    android:checked="true"
+                    android:textSize="16sp"
+                    android:buttonTint="@color/colorGreen_A400"
+                    android:layout_marginRight="5dp"/>
+                <RadioButton
+                    android:id="@+id/radio_nonveg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="NonVeg"
+                    android:textSize="16sp"
+                    android:buttonTint="@color/colorGreen_A400"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:paddingTop="10dp"
             android:paddingBottom="10dp">

@@ -30,6 +30,8 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         super.onCreate(state);
         // Programmatically initialize the scanner view
         mScannerView = new ZXingScannerView(this);
+        getSupportActionBar().hide(); //<< this
+
         databaseReference= FirebaseDatabase.getInstance().getReference().child("NGO").child("RHA").child("KYC");
         // Set the scanner view as the content view
         setContentView(mScannerView);
@@ -107,12 +109,17 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
 
         }
         cipher = new String(rfc);
+
             Intent intent1=new Intent(getApplicationContext(),hotel_end.class);
             startActivity(intent1);
 //        if (cipher.trim().equals(deciphered))
 //            Toast.makeText(this, "KYC Complete", Toast.LENGTH_SHORT).show();
 //        else
 //            Toast.makeText(this,"Invalid credentials",Toast.LENGTH_LONG).show();
+        if (cipher.equals(deciphered))
+            Toast.makeText(this, "KYC Complete", Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this,"Invalid credentials",Toast.LENGTH_LONG).show();
         setResult(RESULT_OK, intent);
         finish();
     }

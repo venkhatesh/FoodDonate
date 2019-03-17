@@ -3,9 +3,11 @@ package com.example.bytecamp_raw.Activity.Fragment;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
@@ -41,11 +43,17 @@ public class Track extends Fragment {
     List<String> ngoList,Location;
     private DatabaseReference mDatabase;
     String TAG = "Track";
+    private ConstraintLayout constraintLayout;
+    private AnimationDrawable animationDrawable;
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.track_fragment, container, false);
+
+
         recyclerView = (RecyclerView)view.findViewById(R.id.ngo_reycler);
         ngoList = new ArrayList<>();
         Location = new ArrayList<>();
@@ -59,6 +67,8 @@ public class Track extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapshot:dataSnapshot.getChildren()){
                     Log.d("Track", "onDataChange: " + snapshot.getKey());
+                    ngoList.clear();
+                    Location.clear();
                     ngoList.add(snapshot.getKey());
                     Location.add((String) snapshot.getValue());
                 }
@@ -110,7 +120,7 @@ class TrackAdapter extends RecyclerView.Adapter<TrackAdapter.MyViewHolder>{
         myViewHolder.reject.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mDatabase.child("NGO").child(myViewHolder.ngoName.getText().toString()).child("flag").setValue("true");
+                mDatabase.child("NGO").child(myViewHolder.ngoName.getText().toString()).child("flag").setValue("false");
 
             }
         });

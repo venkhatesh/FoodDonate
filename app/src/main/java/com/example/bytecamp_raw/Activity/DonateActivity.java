@@ -86,7 +86,7 @@ public class DonateActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Log.d(TAG, "onDataChange: " + snapshot.getKey());
-                    showNotification(getApplicationContext(),"Notif",snapshot.getKey() + "wants to take away your foodzz");
+                    showNotification(getApplicationContext(),"Notif",snapshot.getKey() + "wants to take away your food");
                 }
             }
 

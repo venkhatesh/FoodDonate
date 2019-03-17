@@ -11,6 +11,7 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.bytecamp_raw.R;
@@ -31,6 +32,7 @@ public class AddFoodFragment extends BottomSheetDialogFragment {
     EditText hotelName,foodType,foodQty,foodFresh,foodDescription;
     Button submit;
     ImageView btcancel;
+    RadioButton veg_btn,nonveg_btn;
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -49,8 +51,9 @@ public class AddFoodFragment extends BottomSheetDialogFragment {
         foodFresh = sheetView.findViewById(R.id.food_freshness);
         submit = sheetView.findViewById(R.id.bt_confirm);
         foodDescription = sheetView.findViewById(R.id.food_description);
+        veg_btn = sheetView.findViewById(R.id.radio_veg);
+        nonveg_btn = sheetView.findViewById(R.id.radio_nonveg);
         final Date currentTime = Calendar.getInstance().getTime();
-
         final GPSTracker gps = new GPSTracker(getActivity());
 
         btcancel.setOnClickListener(new View.OnClickListener() {
@@ -71,8 +74,11 @@ public class AddFoodFragment extends BottomSheetDialogFragment {
                 myref.child("hotel").child(hotelName.getText().toString()).child("Location").child("Long").setValue("88.370240");
                 myref.child("hotel").child(hotelName.getText().toString()).child("DonationTime").setValue(currentTime.toString());
                 myref.child("hotel").child(hotelName.getText().toString()).child("Description").setValue(foodDescription.getText().toString());
-
-//
+                if (veg_btn.isChecked()){
+                    myref.child("hotel").child(hotelName.getText().toString()).child("class").setValue("veg");
+                }else{
+                    myref.child("hotel").child(hotelName.getText().toString()).child("class").setValue("nonveg");
+                }
 //                myref.child("hotel").child(hotelName.getText().toString()).child("distribution").child("Name").setValue(hotelName.getText().toString());
 //                myref.child("hotel").child(hotelName.getText().toString()).child("distribution").child("FoodType").setValue(foodType.getText().toString());
 //                myref.child("hotel").child(hotelName.getText().toString()).child("distribution").child("Freshness").setValue(foodFresh.getText().toString());
