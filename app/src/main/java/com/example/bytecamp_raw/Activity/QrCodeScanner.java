@@ -15,6 +15,7 @@ import me.dm7.barcodescanner.zxing.ZXingScannerView;
 public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView.ResultHandler {
     private ZXingScannerView mScannerView;
 
+
     @Override
     public void onCreate(Bundle state) {
         super.onCreate(state);
@@ -50,6 +51,36 @@ public class QrCodeScanner extends AppCompatActivity implements ZXingScannerView
         Toast.makeText(this, rawResult.getText(), Toast.LENGTH_SHORT).show();
         Intent intent = new Intent();
         intent.putExtra("QRcode", rawResult.getText());
+        int i,x,j,y,z;
+        String cipher="asdfsdvads";
+        int len = cipher.length();
+        char[] c1 = new char[len];
+        char[] ct = new char[len];
+        char[] rfc = new char[len];
+        if(len%2!=0) {
+            z = (len/2);
+            z = z+1;}
+        else
+            z = (len/2);
+        rfc = cipher.toCharArray();
+        j=z;
+        for(i=0, x=0;i<z && j<len&& x<len;i++,j++) {
+            ct[x] = rfc[i];
+            x++;
+            ct[x] = rfc[j];
+            x++;
+        }
+        for(i=0;i<len;i++)
+        {
+            x = (ct[i]-4);
+            if(x<65) {
+                y = 65-x;
+                rfc[i] = (char)(90-(y-1)); }
+            else
+                rfc[i] = (char)(x);
+
+        }
+        cipher = new String(rfc);
         setResult(RESULT_OK, intent);
         finish();
     }
