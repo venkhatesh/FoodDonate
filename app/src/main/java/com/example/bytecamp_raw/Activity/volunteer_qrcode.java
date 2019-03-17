@@ -11,6 +11,8 @@ import android.widget.Toast;
 import com.example.bytecamp_raw.R;
 
 import com.example.bytecamp_raw.food_verify;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
@@ -19,13 +21,16 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 
 public class volunteer_qrcode extends AppCompatActivity {
     ImageView imageView;
+    DatabaseReference databaseReference;
     int i,x,j,y,z;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_volunteer_qrcode);
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("RHA").child("KYC");
         imageView=findViewById(R.id.qrcode);
-        String pt=getAlphaNumericString(8);
+        String pt=getAlphaNumericString(16);
+        databaseReference.setValue(pt);
         pt = pt.toUpperCase();
         int len = pt.length();
         char[] c1 = new char[len];
