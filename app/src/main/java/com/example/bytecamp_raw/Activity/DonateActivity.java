@@ -24,6 +24,7 @@ import com.example.bytecamp_raw.Activity.Fragment.ActivityFragment;
 import com.example.bytecamp_raw.Activity.Fragment.AddFoodFragment;
 import com.example.bytecamp_raw.Activity.Fragment.DistributionFragment;
 import com.example.bytecamp_raw.Activity.Fragment.ProfileFragment;
+import com.example.bytecamp_raw.Activity.Fragment.Track;
 import com.example.bytecamp_raw.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -38,6 +39,11 @@ public class DonateActivity extends AppCompatActivity {
     FloatingActionButton fab;
     private DatabaseReference mDatabase;
     String TAG = "DonateActivity";
+    String CHANNEL_ID = "my_channel_01";// The id of the channel.
+    CharSequence name = "NotifName";// The user-visible name of the channel.
+    int importance = NotificationManager.IMPORTANCE_HIGH;
+    NotificationChannel mChannel = new NotificationChannel(CHANNEL_ID, name, importance);
+
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener;
 
     {
@@ -54,7 +60,7 @@ public class DonateActivity extends AppCompatActivity {
                         return true;
                     case R.id.ngo_list:
                         item.setVisible(true);
-                        fragment = new Hotel_Home();
+                        fragment = new Track();
                         loadFragment(fragment);
                         return true;
                     case R.id.navigation_activity:
@@ -76,6 +82,7 @@ public class DonateActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide(); //<< this
         setContentView(R.layout.activity_donate);
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -86,7 +93,7 @@ public class DonateActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
                     Log.d(TAG, "onDataChange: " + snapshot.getKey());
-                    sendNotification();
+                    showNotification(getApplicationContext(),"Notif",snapshot.getKey() + "wants to take away your foodzz");
                 }
             }
 
@@ -117,9 +124,34 @@ public class DonateActivity extends AppCompatActivity {
         transaction.commit();
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void sendNotification() {
-        Log.d(TAG, "sendNotification: ");
-        //Get an instance of NotificationManager//
-   }
+    public void showNotification(Context context, String title, String body) {
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+
+        int notificationId = 1;
+        String channelId = "channel-01";
+        String channelName = "Channel Name";
+        int importance = NotificationManager.IMPORTANCE_HIGH;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            NotificationChannel mChannel = new NotificationChannel(
+                    channelId, channelName, importance);
+            notificationManager.createNotificationChannel(mChannel);
+        }
+
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, channelId)
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(body);
+
+//        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
+//        stackBuilder.addNextIntent(intent);
+//        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+//                0,
+//                PendingIntent.FLAG_UPDATE_CURRENT
+//        );
+//        mBuilder.setContentIntent(resultPendingIntent);
+
+        notificationManager.notify(notificationId, mBuilder.build());
+    }
+
 }

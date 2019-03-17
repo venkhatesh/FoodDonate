@@ -9,8 +9,8 @@
 
     <FrameLayout
         android:id="@+id/hotel_cotainer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:ignore="MissingConstraints"></FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
